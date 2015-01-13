@@ -87,7 +87,26 @@
             android:textColor="@color/colorPrimary"
             android:layout_below="@id/email_sign_in_button"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/message"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/parisview"
+            android:text="@string/paris"
+            android:textColor="@color/colorPrimary"
+            android:layout_centerHorizontal="true"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/dakarview"
+            android:text="@string/dakar"
+            android:textColor="@color/colorPrimary"
+            android:layout_below="@+id/parisview"
+            android:layout_alignEnd="@+id/parisview"
+            android:layout_marginTop="40dp"/>
 
     </RelativeLayout>
 

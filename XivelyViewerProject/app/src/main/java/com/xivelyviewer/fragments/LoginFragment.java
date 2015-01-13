@@ -32,8 +32,13 @@ public class LoginFragment extends Fragment
     @InjectView(R.id.email_sign_in_button) ButtonRectangle email_sign_in_button;
     @InjectView(R.id.message) TextView message;
     @InjectView(R.id.apifield) MaterialEditText apiKey;
+    @InjectView(R.id.dakarview) TextView mDakarView;
+    @InjectView(R.id.parisview) TextView mParisView;
+
     private final IFeedService feedService;
 
+    private String mApiKey ="";
+    private String mFeedId ="";
 
 
 
@@ -78,32 +83,56 @@ public class LoginFragment extends Fragment
 
         message.setText("Getting the feeds...");
 
-        feedService.getUserFeed("859455437", "Rm6s56YK2Wj6Irz8KveLwfa4N1ddVEM3qCrgbRUrWidXGB2a",
-                new Callback<FeedResponse>() {
-//        feedService.getUserFeed(feedId.getText().toString(), apiKey.getText().toString(),
-//                new Callback<FeedResponse>() {
-            @Override public void success(FeedResponse feedResponse, Response response)
-            {
-                if (feedResponse.getErrors() == null)
-                {
-                    getFragmentManager()
-                            .beginTransaction().remove(LoginFragment.this)
-                            .replace(R.id.container,
-                                    DataFragment.newInstance("Rm6s56YK2Wj6Irz8KveLwfa4N1ddVEM3qCrgbRUrWidXGB2a",
-                                            "859455437"))
-                            .addToBackStack("xively")
-                            .commit();
-                }
-                else
-                    message.setText(feedResponse.getErrors().toString());
-            }
+        //mFeedId = feedId.getText().toString();
+        //mApiKey= apiKey.getText().toString();
+        mApiKey = "Rm6s56YK2Wj6Irz8KveLwfa4N1ddVEM3qCrgbRUrWidXGB2a";
+        mFeedId = "859455437";
 
-            @Override public void failure(RetrofitError error)
-            {
-                Log.d(TAG, "failure : " + error.getMessage());
-                message.setText(error.toString());
-            }
-        });
+        makeRequest();
+
+    }
+
+    private void makeRequest(){
+        feedService.getUserFeed(mFeedId, mApiKey,
+                new Callback<FeedResponse>() {
+                    @Override public void success(FeedResponse feedResponse, Response response)
+                    {
+                        if (feedResponse.getErrors() == null)
+                        {
+                            getFragmentManager()
+                                    .beginTransaction().remove(LoginFragment.this)
+                                    .replace(R.id.container,
+                                            DataFragment.newInstance(mApiKey,
+                                                    mFeedId))
+                                    .addToBackStack("xively")
+                                    .commit();
+                        }
+                        else
+                            message.setText(feedResponse.getErrors().toString());
+                    }
+
+                    @Override public void failure(RetrofitError error)
+                    {
+                        Log.d(TAG, "failure : " + error.getMessage());
+                        message.setText(error.toString());
+                    }
+                });
+    }
+
+    @OnClick(R.id.parisview)
+    public void parisView(){
+        mApiKey = "0Aw6UmnZFy2wRQqVCiM2BqzGUj7JpXH6Oa55Lo8xuE7TnFSV";
+        mFeedId = "95558";
+
+        makeRequest();
+    }
+
+    @OnClick(R.id.dakarview)
+    public void darkarView(){
+        mApiKey = "0Aw6UmnZFy2wRQqVCiM2BqzGUj7JpXH6Oa55Lo8xuE7TnFSV";
+        mFeedId = "119921";
+
+        makeRequest();
     }
 
     @Override public void onDestroyView() {

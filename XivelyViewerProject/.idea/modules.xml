@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MPChartLib/MPChartLib.iml" filepath="$PROJECT_DIR$/MPChartLib/MPChartLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/XivelyViewer.iml" filepath="$PROJECT_DIR$/XivelyViewer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/XivelyViewerProject.iml" filepath="$PROJECT_DIR$/XivelyViewerProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/materialDesign/materialDesign.iml" filepath="$PROJECT_DIR$/materialDesign/materialDesign.iml" />
     </modules>

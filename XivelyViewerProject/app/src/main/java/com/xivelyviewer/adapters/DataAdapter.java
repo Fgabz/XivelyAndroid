@@ -1,12 +1,12 @@
 package com.xivelyviewer.adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import com.google.gson.internal.LinkedTreeMap;
 import com.xivelyviewer.R;
 import com.xivelyviewer.viewholders.DataViewHolder;
 
@@ -31,11 +31,15 @@ public class DataAdapter extends ArrayAdapter<LinkedHashMap<Object, Object>>
         mInflater = LayoutInflater.from(context);
     }
 
-    /**Function handling images **/
-    public void setViews(int position, DataViewHolder holder){
+    /**
+     * Function handling images *
+     */
+    public void setViews(int position, DataViewHolder holder)
+    {
         try
         {
-            if (this.getItem(position).get("id").toString().toLowerCase().contains("hygro"))
+            if (this.getItem(position).get("id").toString().toLowerCase().contains("hygro") ||
+                    this.getItem(position).get("id").toString().toLowerCase().contains("humid"))
             {
                 if (Float.valueOf(this.getItem(position).get("current_value").toString()) < 50f)
                 {
@@ -66,12 +70,8 @@ public class DataAdapter extends ArrayAdapter<LinkedHashMap<Object, Object>>
                 else
                     holder.getImage().setIcon("meteo-none");
 
-
-                holder.getCurrentvalue_degree().setText("%");
-                holder.getMaxvalue_degree().setText("%");
-                holder.getMinvalue_degree().setText("%");
             }
-            else
+            else if (this.getItem(position).get("id").toString().toLowerCase().contains("temp"))
             {
                 if (Float.valueOf(this.getItem(position).get("current_value").toString()) <= 20f
                         && Float.valueOf(this.getItem(position).get("current_value").toString()) >= 10f)
@@ -101,24 +101,52 @@ public class DataAdapter extends ArrayAdapter<LinkedHashMap<Object, Object>>
                 }
                 else
                     holder.getImage().setIcon("meteo-none");
-
-                holder.getCurrentvalue_degree().setText("°C");
-                holder.getMaxvalue_degree().setText("°C");
-                holder.getMinvalue_degree().setText("°C");
             }
+            else if (this.getItem(position).get("id").toString().toLowerCase().contains("pressure"))
+            {
+                holder.getImage().setIcon("meteo-thermometer");
+            }
+            else if (this.getItem(position).get("id").toString().toLowerCase().contains("volt"))
+            {
+                holder.getImage().setIcon("iconic-flash");
+            }
+            else
+                holder.getImage().setIcon("meteo-none");
+
+
+            setUnit(holder, position);
+
             holder.getName().setText(this.getItem(position).get("id").toString());
 
-        } catch (NumberFormatException excv)
-        {
-            Log.d("Error", excv.getMessage());
+            holder.getCurrent_value().setText(this.getItem(position).get("current_value").toString());
+            holder.getMax().setText(this.getItem(position).get("max_value").toString());
+            holder.getMini().setText(this.getItem(position).get("min_value").toString());
+
+        } catch (Exception excv){
+            //Log.d("Error", excv.getMessage());
             holder.getImage().setIcon("meteo-none");
         }
+    }
 
 
+    private void setUnit(DataViewHolder holder, int position){
 
-        holder.getCurrent_value().setText(this.getItem(position).get("current_value").toString());
-        holder.getMax().setText(this.getItem(position).get("max_value").toString());
-        holder.getMini().setText(this.getItem(position).get("min_value").toString());
+        LinkedTreeMap<String, String> unitMap = (LinkedTreeMap<String, String>)
+                this.getItem(position).get("unit");
+        String unit = "N/A";
+        if (unitMap != null)
+        {
+            if (unitMap.get("symbol") != null)
+                unit = unitMap.get("symbol");
+            else if (unitMap.get("label") != null)
+                unit = unitMap.get("label");
+            else
+                unit = "N/A";
+        }
+
+        holder.getCurrentvalue_degree().setText(unit);
+        holder.getMaxvalue_degree().setText(unit);
+        holder.getMinvalue_degree().setText(unit);
     }
 
     @Override public View getView(int position, View convertView, ViewGroup parent)

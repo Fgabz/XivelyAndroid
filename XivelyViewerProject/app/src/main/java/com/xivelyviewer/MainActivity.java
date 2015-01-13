@@ -1,5 +1,6 @@
 package com.xivelyviewer;
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -44,14 +45,35 @@ public class MainActivity extends ActionBarActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings)
+        if (id == R.id.action_logout)
         {
+            getFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+            /**
+             * add login fragment on log out
+             */
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.container, LoginFragment.newInstance())
+                    .commit();
+
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+//    @Override
+//    public void onConfigurationChanged(Configuration newConfig) {
+//        super.onConfigurationChanged(newConfig);
+//
+//        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//            setContentView(R.layout.landscapeView);
+//
+//        } else {
+//            setContentView(R.layout.portraitView);
+//        }
+//    }
 
     @Override
     public void onBackPressed()

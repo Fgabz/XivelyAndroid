@@ -39,18 +39,18 @@
             android:textColor="@color/md_grey_800"
             />
 
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Date"
-            android:textStyle="bold"
-            android:typeface="sans"
-            android:fontFamily="fonts/GearedSlab.ttf"
-            android:textSize="10sp"
-            android:textColor="@color/md_grey_800"
-            android:layout_alignBottom="@+id/layout_minmax"
-            android:layout_toEndOf="@+id/name"/>
+        <!--<TextView-->
+            <!--android:id="@+id/date"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Date"-->
+            <!--android:textStyle="bold"-->
+            <!--android:typeface="sans"-->
+            <!--android:fontFamily="fonts/GearedSlab.ttf"-->
+            <!--android:textSize="10sp"-->
+            <!--android:textColor="@color/md_grey_800"-->
+            <!--android:layout_alignBottom="@+id/layout_minmax"-->
+            <!--android:layout_toEndOf="@+id/name"/>-->
 
         <TextView
             android:id="@+id/current_value_degree"

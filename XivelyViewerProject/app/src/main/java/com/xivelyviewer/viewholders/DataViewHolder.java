@@ -17,7 +17,7 @@ import lombok.Data;
 public class DataViewHolder
 {
     @InjectView(R.id.card_view) CardView mCardview;
-    @InjectView(R.id.date) TextView mDate;
+   // @InjectView(R.id.date) TextView mDate;
     @InjectView(R.id.image) DroidiconBadge image;
     @InjectView(R.id.name) TextView name;
     @InjectView(R.id.minvalue) TextView mini;
