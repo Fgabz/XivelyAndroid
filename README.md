@@ -12,15 +12,15 @@
 
 ##Library used for this Project :
 
-####View "injection" library for Android
+<h4>View "injection" library for Android
 * [ButterKnife](http://jakewharton.github.io/butterknife/)
-####Chart
+<h4>Chart
 * [MPChartLib](https://github.com/PhilJay/MPAndroidChart)
-#####API request
+<h4>API request
 * [Retrofit](http://square.github.io/retrofit/)
-####Java time and date lib
+<h4>Java time and date lib
 * [JodaTime](http://www.joda.org/joda-time/)
-####Material Design
+<h4>Material Design
 * [MaterialDesignLibrary](https://github.com/navasmdc/MaterialDesignLibrary)
-####Icon
+<h4>Icon
 * [Droidicon](https://github.com/theDazzler/droidicon)
