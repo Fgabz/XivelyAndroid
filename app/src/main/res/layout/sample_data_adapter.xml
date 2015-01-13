@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    xmlns:droidicon="http://schemas.android.com/apk/res-auto"
+                                    android:id="@+id/card_view"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    card_view:cardCornerRadius="4dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.thedazzler.droidicon.badges.DroidiconBadge
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            droidicon:db_icon_padding="10dp"
+            android:layout_marginRight="20dp"
+            droidicon:db_size="100dp"
+            droidicon:db_icon_color="@color/md_black"
+            droidicon:db_icon="meteo-sun"
+            />
+
+
+
+        <TextView
+            android:id="@+id/current_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/image"
+            android:text="Current Value"
+            android:textStyle="normal"
+            android:typeface="serif"
+            android:fontFamily="fonts/GearedSlab.ttf"
+            android:textSize="50sp"
+            android:textColor="@color/md_grey_800"
+            />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textStyle="bold"
+            android:typeface="sans"
+            android:fontFamily="fonts/GearedSlab.ttf"
+            android:textSize="10sp"
+            android:textColor="@color/md_grey_800"
+            android:layout_alignBottom="@+id/layout_minmax"
+            android:layout_toEndOf="@+id/name"/>
+
+        <TextView
+            android:id="@+id/current_value_degree"
+            android:layout_width="wrap_content"
+            android:fontFamily="fonts/GearedSlab.ttf"
+            android:layout_height="wrap_content"
+            android:text="@string/degree"
+            android:typeface="serif"
+            android:textSize="30sp"
+            android:textColor="@color/md_grey_600"
+            android:theme="@style/Base.TextAppearance.AppCompat.Title"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/current_value"/>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/layout_minmax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/current_value"
+            android:layout_toRightOf="@id/image"
+            >
+
+            <TextView
+                android:id="@+id/min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="28dp"
+                android:textSize="30dip"
+                android:textColor="@color/md_grey_500"
+                android:layout_marginEnd="@dimen/card_margin"
+                android:text="Mini"/>
+
+            <TextView
+                android:id="@+id/max"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="28dp"
+                android:textSize="30dip"
+                android:textColor="@color/md_grey_500"
+                android:layout_marginEnd="@dimen/card_margin"
+                android:text="Maxi"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/layout_minmaxvalue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_minmax"
+            android:layout_toRightOf="@id/image"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                android:id="@+id/minvalue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/card_margin"
+                android:text="MiniValue"
+                android:textStyle="bold"
+                android:textColor="@color/md_black"/>
+
+            <TextView
+                android:id="@+id/minvalue_degree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/card_margin"
+                android:text="@string/degree"
+                android:textStyle="bold"
+                android:textColor="@color/md_light_blue_a700"
+                />
+
+            <TextView
+                android:id="@+id/maxvalue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/card_margin"
+                android:text="MaxiValue"
+                android:textStyle="bold"
+                android:textColor="@color/md_black"/>
+
+            <TextView
+                android:id="@+id/maxvalue_degree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="28dp"
+                android:layout_marginEnd="@dimen/card_margin"
+                android:text="@string/degree"
+                android:textStyle="bold"
+                android:textColor="@color/md_red_800"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_minmaxvalue"
+            android:layout_toRightOf="@id/image"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/md_grey_500"
+            android:layout_marginRight="28dp"
+            android:fontFamily="fonts/GearedSlab.ttf"
+            android:textSize="30sp"
+            android:layout_marginEnd="@dimen/card_margin"
+            android:text="The project name goes here"/>
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
